@@ -8,6 +8,7 @@ use DoctrineExtensions\Paginate\Paginate;
 class Paginator implements Pagination
 {
     private $container;
+    private $query;
     private $items = 0;
     private $page = 1;
     private $pages = 1;
@@ -16,15 +17,46 @@ class Paginator implements Pagination
 
     public function __construct($container, $query, $itemsPerPage, $page)
     {
-        $this->container = $container;
-        
+        $this->setContainer($container);
         $this->setPage($page);
         $this->setItemsPerPage($itemsPerPage);
+        $this->setItems( $this->countItems($query) );
+        $this->setQuery( $this->createQuery($query));
+    }
 
-        $this->setItems( Paginate::getTotalQueryResults($query) );
+    protected function countItems($query)
+    {
+        return Paginate::getTotalQueryResults($query);
+    }
 
-        $query->setFirstResult($this->getPage() * $this->getItemsPerPage());
-        $query->setMaxResults($this->getItemsPerPage());
+    protected function createQuery($query)
+    {
+        return Paginate::getPaginateQuery($query, $this->getPage() * $this->getItemsPerPage(), $this->getItemsPerPage() );
+    }
+
+    public function setContainer($container)
+    {
+        $this->container = $container;
+    }
+
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    public function setQuery($query)
+    {
+        $this->query = $query;
+    }
+
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    public function getResult()
+    {
+        return $this->getQuery()->getResult();
     }
 
     public function setItems($items)
@@ -77,7 +109,7 @@ class Paginator implements Pagination
         $route  = $this->container->get('request')->attributes->get('_route');
         $params = $this->container->get('request')->attributes->all();
         $params = $params + $this->container->get('request')->query->all();
-        $params['page'] = '__page__';
+        $params['page'] = '000';
 
         foreach ($params as $key => $value) {
             if ($key{0} == '_') {
@@ -127,6 +159,6 @@ class Paginator implements Pagination
 
     protected function generateUrl($page)
     {
-        return str_replace('__page__', $page, $this->getUrl());
+        return str_replace('000', $page, $this->getUrl());
     }
 }
