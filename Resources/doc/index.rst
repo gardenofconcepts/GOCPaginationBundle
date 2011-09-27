@@ -1,6 +1,11 @@
-### Installation
+Documentation
+=============
 
-add to your deps file:
+
+Configuration
+-------------
+
+add to your deps file::
 
     [DoctrineExtensions]
         git=http://github.com/beberlei/DoctrineExtensions.git
@@ -10,30 +15,32 @@ add to your deps file:
         git=http://github.com/dennisoehme/GOCPaginationBundle.git
         target=/bundles/GOC/PaginationBundle
 
-modify your autoload.php for autoloading bundle and doctrine extensions.
+modify your autoload.php for autoloading bundle and doctrine extensions.::
 
     'DoctrineExtensions' => __DIR__.'/../vendor/doctrine-extensions/lib',
     'GOC'                => __DIR__.'/../vendor/bundles',
 
-load GOCPaginationBundle in your AppKernel.php
+load GOCPaginationBundle in your AppKernel.php::
 
     new GOC\PaginationBundle\GOCPaginationBundle();
 
-run
+run::
 
     php bin/vendors install
 
 
-### Routing
+Routing
+-------
 
-every route for pagination requires one parameter called "page" (default = 1):
+every route for pagination requires one parameter called "page" (default = 1)::
 
     items:
         pattern:   /items/{page}
         defaults:  { _controller: AcmeExampleBundle:Item:list, page: 1 }
 
 
-### Controller
+Controller
+----------
 
 in your controller create a pagination, the only parameter thats required is
 
@@ -41,7 +48,7 @@ in your controller create a pagination, the only parameter thats required is
 * the second parameter ($items) are the count of items per page (default = 50)
 * the last one ($page) is the actual page number (is optional because page number will be detect automatically from routing, too)
 
-ItemController:
+ItemController::
 
     /**
      * @Template()
@@ -59,12 +66,14 @@ ItemController:
                      'pagination' => $pagination);
     }
 
-### Template (Twig)
+Template (Twig)
+---------------
+::
 
     {{ pagination(pagination) }}
     {{ pagination.items }} Items / {{ pagination.pages }} Pages
 
-generates:
+generates::
     
     <div class="Pagination">
         <ol class="Pagination">
