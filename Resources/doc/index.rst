@@ -15,7 +15,7 @@ add to your deps file::
         git=http://github.com/dennisoehme/GOCPaginationBundle.git
         target=/bundles/GOC/PaginationBundle
 
-modify your autoload.php for autoloading bundle and doctrine extensions.::
+modify your autoload.php for autoloading bundle and doctrine extensions::
 
     'DoctrineExtensions' => __DIR__.'/../vendor/doctrine-extensions/lib',
     'GOC'                => __DIR__.'/../vendor/bundles',
@@ -42,11 +42,11 @@ every route for pagination requires one parameter called "page" (default = 1)::
 Controller
 ----------
 
-in your controller create a pagination, the only parameter thats required is
+in your controller create a pagination from factory but only the first parameter is required:
 
 * $query (an instance of \Doctrine\ORM\Query)
-* the second parameter ($items) are the count of items per page (default = 50)
-* the last one ($page) is the actual page number (is optional because page number will be detect automatically from routing, too)
+* the second parameter ($items) is the count of items per page (default = 50)
+* the last one ($page) is the actual page number (is optional because page number will be detect automatically from routing)
 
 ItemController::
 
