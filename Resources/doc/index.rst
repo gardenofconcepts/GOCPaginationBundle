@@ -68,10 +68,10 @@ ItemController::
 
 Template (Twig)
 ---------------
-::
+
+the bundle includes a twig function called "pagination" that requires as parameter the pagination object from controller:::
 
     {{ pagination(pagination) }}
-    {{ pagination.items }} Items / {{ pagination.pages }} Pages
 
 generates::
     
@@ -86,3 +86,7 @@ generates::
             <li><a href="/items/2" class="next">»</a></li>
         </ol>
     </div>
+
+the pagination object has some getter methods::
+
+    {{ pagination.items }} Items found | Page {{ pagination.page }} / {{ pagination.pages }} Pages
