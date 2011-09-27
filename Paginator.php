@@ -127,31 +127,32 @@ class Paginator implements Pagination
         $result = array();
 
         if ($page > 1 && $pages > 1) {
-            $result[] = '<li><a href="' . $this->generateUrl($page-1) . '" class="prev">«</a></li>';
+            $result[] = '<li class="prev"><a href="' . $this->generateUrl($page-1) . '" class="prev">«</a></li>';
         }
 
         if ($page > 4) {
-            $result[] = '<li><a href="' . $this->generateUrl(1) . '" class="first">1</a></li>';
+            $result[] = '<li class="first"><a href="' . $this->generateUrl(1) . '" class="first">1</a></li>';
             if ($page-1 > 4) {
-                $result[] = '<li>...</li>';
+                $result[] = '<li class="spacer spacer-prev">...</li>';
             }
         }
 
         for ($i = $page-3; $i < $page+4; $i++) {
             if ($i > 0 && $i <= $pages) {
-                $result[] = '<li><a href="' . $this->generateUrl($i) . '" class="' . (($i != $page) ?: 'active') . '">' . $i . '</a></li>';
+                $class = ($i == $page) ? ' class="active"' : '';
+                $result[] = '<li class="page"><a href="' . $this->generateUrl($i) . '"' . $class . '>' . $i . '</a></li>';
             }
         }
 
         if ($page+3 < $pages) {
             if ($page+4 < $pages) {
-                $result[] = '<li>...</li>';
+                $result[] = '<li class="spacer spacer-next">...</li>';
             }
-            $result[] = '<li><a href="' . $this->generateUrl($pages) . '" class="last">' . $pages . '</a></li>';
+            $result[] = '<li class="last"><a href="' . $this->generateUrl($pages) . '" class="last">' . $pages . '</a></li>';
         }
 
         if ($page < $pages && $pages > 1) {
-            $result[] = '<li><a href="' . $this->generateUrl($page+1) . '" class="next">»</a></li>';
+            $result[] = '<li class="next"><a href="' . $this->generateUrl($page+1) . '" class="next">»</a></li>';
         }
 
         return '<div class="Pagination"><ol class="Pagination">' . implode(PHP_EOL, $result) . '</ol></div>';

@@ -77,13 +77,16 @@ generates::
     
     <div class="Pagination">
         <ol class="Pagination">
-            <li><a href="/items/1" class="active">1</a></li>
-            <li><a href="/items/2" class="1">2</a></li>
-            <li><a href="/items/3" class="1">3</a></li>
-            <li><a href="/items/4" class="1">4</a></li>
-            <li>...</li>
-            <li><a href="/items/15" class="last">15</a></li>
-            <li><a href="/items/2" class="next">»</a></li>
+            <li class="prev"><a href="/items/2" class="prev">«</a></li>
+            <li class="page"><a href="/items/1">1</a></li>
+            <li class="page"><a href="/items/2">2</a></li>
+            <li class="page"><a href="/items/3" class="active">3</a></li>
+            <li class="page"><a href="/items/4">4</a></li>
+            <li class="page"><a href="/items/5">5</a></li>
+            <li class="page"><a href="/items/6">6</a></li>
+            <li class="spacer spacer-next">...</li>
+            <li class="last"><a href="/items/13" class="last">13</a></li>
+            <li class="next"><a href="/items/4" class="next">»</a></li>
         </ol>
     </div>
 
