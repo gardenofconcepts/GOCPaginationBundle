@@ -23,7 +23,7 @@ Simple pagination bundle for Symfony 2 and Doctrine2 ORM
 
 ### License
 
-see [LICENSE](GOCLocaleBundle/blob/master/LICENSE)
+see [LICENSE](GOCPaginationBundle/blob/master/LICENSE)
 
 
 ### Support
