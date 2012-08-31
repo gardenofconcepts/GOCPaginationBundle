@@ -20,9 +20,9 @@ class PaginationExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'pagination'        => new \Twig_Filter_Method($this, 'renderPagination', array('is_safe' => array('html'))),
-            'pagination_items'  => new \Twig_Filter_Method($this, 'getItems', array('is_safe' => array('html'))),
-            'pagination_pages'  => new \Twig_Filter_Method($this, 'getPages', array('is_safe' => array('html'))),
+            'pagination'        => new \Twig_Function_Method($this, 'renderPagination', array('is_safe' => array('html'))),
+            'pagination_items'  => new \Twig_Function_Method($this, 'getItems', array('is_safe' => array('html'))),
+            'pagination_pages'  => new \Twig_Function_Method($this, 'getPages', array('is_safe' => array('html'))),
         );
     }
 
