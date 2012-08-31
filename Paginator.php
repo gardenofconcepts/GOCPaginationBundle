@@ -3,7 +3,7 @@
 namespace GOC\PaginationBundle;
 
 use Symfony\Component\DependencyInjection\Container;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
+use DoctrineExtensions\Paginate\Paginate;
 
 class Paginator implements Pagination
 {
@@ -26,15 +26,12 @@ class Paginator implements Pagination
 
     protected function countItems($query)
     {
-        return $this->createQuery($query)->count();
+        return Paginate::getTotalQueryResults($query);
     }
 
     protected function createQuery($query)
     {
-        $query->setFirstResult($this->getPage() * $this->getItemsPerPage());
-        $query->setMaxResults($this->getItemsPerPage());
-
-        return new DoctrinePaginator($query);
+        return Paginate::getPaginateQuery($query, $this->getPage() * $this->getItemsPerPage(), $this->getItemsPerPage() );
     }
 
     public function setContainer($container)
@@ -59,7 +56,7 @@ class Paginator implements Pagination
 
     public function getResult()
     {
-        return $this->getQuery();
+        return $this->getQuery()->getResult();
     }
 
     public function setItems($items)
