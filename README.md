@@ -7,7 +7,7 @@ Simple pagination bundle for Symfony 2 and Doctrine2 ORM
 ### Requirements
 
 * Symfony 2 ;-)
-* [DoctrineExtensions](https://github.com/beberlei/DoctrineExtensions)
+* Doctrine 2.2
 
 
 ### Documentation
