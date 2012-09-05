@@ -3,7 +3,6 @@
 namespace GOC\PaginationBundle;
 
 use Symfony\Component\DependencyInjection\Container;
-use DoctrineExtensions\Paginate\Paginate;
 
 class Paginator implements Pagination
 {
