@@ -6,7 +6,6 @@ use Doctrine\MongoDB\Query\Builder;
 use Doctrine\ODM\MongoDB\Query\Query;
 use Countable;
 use IteratorAggregate;
-use ArrayIterator;
 
 /**
  * Paginator
@@ -57,6 +56,7 @@ class PaginatorOdm implements \Countable, \IteratorAggregate
     public function count()
     {
         $this->count = $this->query->count();
+
         return $this->count;
     }
 
@@ -73,7 +73,7 @@ class PaginatorOdm implements \Countable, \IteratorAggregate
             ->limit($length)
             ->skip($offset)
         ;
+
         return $result;
     }
 }
-

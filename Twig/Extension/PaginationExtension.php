@@ -4,7 +4,7 @@ namespace GOC\PaginationBundle\Twig\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use GOC\PaginationBundle\Pagination;
-    
+
 class PaginationExtension extends \Twig_Extension
 {
     protected $container;
@@ -33,12 +33,12 @@ class PaginationExtension extends \Twig_Extension
 
     public function getItems(Pagination $pagination)
     {
-        return (int)$pagination->getItems();
+        return (int) $pagination->getItems();
     }
 
     public function getPages(Pagination $pagination)
     {
-        return (int)$pagination->getPages();
+        return (int) $pagination->getPages();
     }
 
     /**

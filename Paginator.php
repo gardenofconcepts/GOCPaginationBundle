@@ -35,7 +35,7 @@ class Paginator implements Pagination
             ->setFirstResult($this->getPage() * $this->getItemsPerPage())
             ->setMaxResults($this->getItemsPerPage())
         ;
-    
+
         return new DoctrinePaginator($query);
     }
 

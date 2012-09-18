@@ -26,7 +26,7 @@ class Factory
 
         $class = $this->class;
 
-        return new $class($this->container, $query, (int)$items, (int)$page);
+        return new $class($this->container, $query, (int) $items, (int) $page);
     }
 
     public function createOdm($query, $items = 50, $page = null)
