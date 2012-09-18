@@ -11,8 +11,8 @@ class Factory
     public function __construct(Container $container, $class, $classOdm)
     {
         $this->container = $container;
-        $this->class = $class;
-        $this->classOdm = $classOdm;
+        $this->class     = $class;
+        $this->classOdm  = $classOdm;
     }
 
     public function create($query, $items = 50, $page = null)
@@ -23,16 +23,8 @@ class Factory
                 throw Exception::unknownPageNumber();
             }
         }
+        $class = $query instanceof \Doctrine\ODM\MongoDB\Query\Builder ? $this->classOdm : $this->class;
 
-        $class = $this->class;
-
-        return new $class($this->container, $query, (int) $items, (int) $page);
-    }
-
-    public function createOdm($query, $items = 50, $page = null)
-    {
-        $this->class = $this->classOdm;
-
-        return $this->create($query, $items, $page);
+        return new $class($this->container, $query, (int)$items, (int)$page);
     }
 }
