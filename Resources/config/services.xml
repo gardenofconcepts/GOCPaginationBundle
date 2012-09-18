@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="goc_pagination.class">GOC\PaginationBundle\Paginator</parameter>
+        <parameter key="goc_paginationOdm.class">GOC\PaginationBundle\PaginatorOdm</parameter>
         <parameter key="goc_pagination.factory.class">GOC\PaginationBundle\Factory</parameter>
         <parameter key="goc_pagination.twig.class">GOC\PaginationBundle\Twig\Extension\PaginationExtension</parameter>
     </parameters>
@@ -14,6 +15,7 @@
         <service id="goc_pagination.factory" class="%goc_pagination.factory.class%">
             <argument type="service" id="service_container" />
             <argument>%goc_pagination.class%</argument>
+            <argument>%goc_paginationOdm.class%</argument>
         </service>
         <service id="goc_pagination.twig" class="%goc_pagination.twig.class%">
             <argument type="service" id="service_container" />
