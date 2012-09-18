@@ -31,8 +31,10 @@ class Paginator implements Pagination
 
     protected function createQuery($query)
     {
-        $query->setFirstResult($this->getPage() * $this->getItemsPerPage());
-        $query->setMaxResults($this->getItemsPerPage());
+        $query
+            ->setFirstResult($this->getPage() * $this->getItemsPerPage())
+            ->setMaxResults($this->getItemsPerPage())
+        ;
 
         return new DoctrinePaginator($query);
     }

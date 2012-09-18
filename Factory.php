@@ -6,14 +6,15 @@ use Symfony\Component\DependencyInjection\Container;
 
 class Factory
 {
-    private $container;
-    private $class;
+    private $container, $class, $classOdm;
 
-    public function __construct(Container $container, $class)
+    public function __construct(Container $container, $class, $classOdm)
     {
         $this->container = $container;
-        $this->class = $class;
+        $this->class     = $class;
+        $this->classOdm  = $classOdm;
     }
+
     public function create($query, $items = 50, $page = null)
     {
         if ($page == null) {
@@ -22,8 +23,7 @@ class Factory
                 throw Exception::unknownPageNumber();
             }
         }
-
-        $class = $this->class;
+        $class = $query instanceof \Doctrine\ODM\MongoDB\Query\Builder ? $this->classOdm : $this->class;
 
         return new $class($this->container, $query, (int)$items, (int)$page);
     }
