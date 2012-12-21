@@ -1,0 +1,10 @@
+{
+    "name": "goc/pagination-bundle",
+    "description": "Simple pagination bundle for Symfony 2",
+    "type": "library",
+    "homepage": "https://github.com/gardenofconcepts/GOCPaginationBundle.git",
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "target-dir": "GOC/PaginationBundle"
+}
